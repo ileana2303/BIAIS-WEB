@@ -22,9 +22,11 @@ export default function Navbar() {
         <a href="#" className="hover:text-black transition">Contact</a>
       </div>
 
-      <button className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
-        Start Project
-      </button>
+      <Link href="/contact-us">
+        <button className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
+          Start Your Project
+        </button>
+      </Link>
 
     </nav>
   )
