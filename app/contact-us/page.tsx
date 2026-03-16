@@ -35,117 +35,116 @@ export default function ContactUs() {
     };
 
     return (
-        <section className="min-h-screen bg-gray-50 px-6 py-24">
+        <section className="min-h-screen bg-[#FFFAF0] py-20">
+            <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 lg:grid-cols-2">
+                <div className="flex items-center px-6 py-20 lg:px-12 xl:px-16">
+                    <div className="max-w-xl space-y-6">
+                        <h1 className="text-4xl tracking-tight md:text-8xl">
+                            Get in touch
+                        </h1>
 
-            <div className="max-w-6xl mx-auto">
+                        <p className="max-w-xl text-lg leading-relaxed text-gray-300">
+                            Not sure where to start?
+                            <br />
+                            Tell us about your product to get the ball rolling.
+                        </p>
 
-                <div className="mb-16 space-y-6">
-
-                    <h1 className="text-5xl md:text-6xl text-gray-900 tracking-tight">We Are Happy to Listen
-                    </h1>
-
-                    <p className="text-lg text-gray-600 max-w-xl leading-relaxed">
-                        Not sure where to start?
-                        <br />
-                        Tell us about your product to get the ball rolling.
-                    </p>
-
-                    <Link
-                        href="/contact-us/careers"
-                        className="inline-block text-gray-500 text-sm underline underline-offset-4 hover:text-black transition"
-                    >
-                        Looking for a job? →
-                    </Link>
-
-                </div>
-                <form
-                    onSubmit={handleSubmit}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white p-12 rounded-2xl shadow-sm"
-                >
-
-                    <div>
-                        <label className="text-gray-500">Full name *</label>
-                        <input
-                            name="name"
-                            required
-                            onChange={handleChange}
-                            className="w-full border-b py-3 outline-none focus:border-black"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="text-gray-500">Email *</label>
-                        <input
-                            name="email"
-                            type="email"
-                            required
-                            onChange={handleChange}
-                            className="w-full border-b py-3 outline-none focus:border-black"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="text-gray-500">Phone number *</label>
-                        <input
-                            name="phone"
-                            required
-                            onChange={handleChange}
-                            className="w-full border-b py-3 outline-none focus:border-black"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="text-gray-500">Country *</label>
-                        <input
-                            name="country"
-                            value={form.country}
-                            onChange={handleChange}
-                            className="w-full border-b py-3 outline-none focus:border-black"
-                        />
-                    </div>
-
-                    <div className="md:col-span-2">
-                        <label className="text-gray-500">Company *</label>
-                        <input
-                            name="company"
-                            required
-                            onChange={handleChange}
-                            className="w-full border-b py-3 outline-none focus:border-black"
-                        />
-                    </div>
-
-                    <div className="md:col-span-2">
-                        <label className="text-gray-500">Message</label>
-                        <textarea
-                            name="message"
-                            required
-                            rows={4}
-                            onChange={handleChange}
-                            className="w-full border-b py-3 outline-none resize-none focus:border-black"
-                        />
-                    </div>
-
-                    <div className="md:col-span-2 flex items-center gap-3 text-gray-600">
-                        <input
-                            type="checkbox"
-                            name="newsletter"
-                            onChange={handleChange}
-                        />
-                        I want to receive news and updates once in a while
-                    </div>
-                    
-                    <div className="md:col-span-2 pt-4">
-                        <button
-                            type="submit"
-                            className="bg-black text-white px-8 py-4 rounded-full hover:opacity-90 transition"
+                        <Link
+                            href="/contact-us/careers"
+                            className="inline-block text-sm text-gray-400 underline underline-offset-4 transition hover:text-white"
                         >
-                            Contact us →
-                        </button>
+                            Looking for a job? →
+                        </Link>
                     </div>
+                </div>
 
-                </form>
+                <div className="flex items-center px-6 py-20 lg:px-12 xl:px-16">
+                    <form
+                        onSubmit={handleSubmit}
+                        className="grid w-full grid-cols-1 gap-10 rounded-2xl bg-white p-8 text-black shadow-sm md:grid-cols-2 lg:max-w-2xl"
+                    >
+                        <div>
+                            <label className="text-gray-500">Full name *</label>
+                            <input
+                                name="name"
+                                required
+                                onChange={handleChange}
+                                className="w-full border-b py-3 outline-none focus:border-black"
+                            />
+                        </div>
 
+                        <div>
+                            <label className="text-gray-500">Email *</label>
+                            <input
+                                name="email"
+                                type="email"
+                                required
+                                onChange={handleChange}
+                                className="w-full border-b py-3 outline-none focus:border-black"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="text-gray-500">Phone number *</label>
+                            <input
+                                name="phone"
+                                required
+                                onChange={handleChange}
+                                className="w-full border-b py-3 outline-none focus:border-black"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="text-gray-500">Country *</label>
+                            <input
+                                name="country"
+                                value={form.country}
+                                onChange={handleChange}
+                                className="w-full border-b py-3 outline-none focus:border-black"
+                            />
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="text-gray-500">Company *</label>
+                            <input
+                                name="company"
+                                required
+                                onChange={handleChange}
+                                className="w-full border-b py-3 outline-none focus:border-black"
+                            />
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="text-gray-500">Message</label>
+                            <textarea
+                                name="message"
+                                required
+                                rows={4}
+                                onChange={handleChange}
+                                className="w-full resize-none border-b py-3 outline-none focus:border-black"
+                            />
+                        </div>
+
+                        <div className="md:col-span-2 flex items-center gap-3 text-gray-600">
+                            <input
+                                type="checkbox"
+                                name="newsletter"
+                                onChange={handleChange}
+                            />
+                            I want to receive news and updates once in a while
+                        </div>
+
+                        <div className="md:col-span-2 pt-4">
+                            <button
+                                type="submit"
+                                className="rounded-full bg-black px-8 py-4 text-white transition hover:opacity-90"
+                            >
+                                Contact us →
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </section >
+        </section>
     );
 }

@@ -126,6 +126,7 @@ function ProjectModal({ project, onClose }) {
   if (!project) return null;
 
   return (
+
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-lg p-6">
       <div className="relative max-w-5xl w-full bg-black rounded-3xl overflow-hidden shadow-2xl">
         <button
@@ -171,14 +172,15 @@ export default function Projects() {
   const [activeProject, setActiveProject] = useState(null);
 
   return (
-    <section id="projects" className="py-36 px-6">
+
+    <section id="projects" className="bg-black py-36 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl md:text-6xl font-semibold mb-6 tracking-tight">
+          <h2 className="text-[#FFFAF0] text-4xl md:text-6xl font-semibold mb-6 tracking-tight">
             Selected Projects
           </h2>
 
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-500 mx-auto leading-relaxed">
             Platforms, AI systems and applications engineered for scalability,
             performance and real-world impact.
           </p>

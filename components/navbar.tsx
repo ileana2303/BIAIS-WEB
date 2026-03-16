@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-6 z-50 flex justify-between items-center px-10 py-4 max-w-full mx-6 md:mx-10 xl:mx-16 mt-6 bg-white backdrop-blur-md border border-gray-200 rounded-full shadow-sm">
+    <nav className="sticky top-6 z-50 flex justify-between items-center px-10 py-4 max-w-full mx-6 md:mx-10 xl:mx-16 mt-6 bg-[#FFFAF0] rounded-full">
 
       <Link href="/" className="flex items-center gap-2">
         <Image
@@ -18,12 +18,12 @@ export default function Navbar() {
 
       <div className="flex gap-8 text-sm font-medium text-gray-700">
         <a href="#" className="hover:text-black transition">Services</a>
-        <a href="#" className="hover:text-black transition">Work</a>
+        <a href="#" className="hover:text-black transition">Works</a>
         <a href="#" className="hover:text-black transition">Contact</a>
       </div>
 
       <Link href="/contact-us">
-        <button className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
+        <button className="px-4 py-2 bg-black text-[#FFFAF0] rounded-full hover:bg-gray-800 transition">
           Start Your Project
         </button>
       </Link>
