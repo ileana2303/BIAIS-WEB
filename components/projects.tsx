@@ -171,9 +171,9 @@ export default function Projects() {
   const [activeProject, setActiveProject] = useState(null);
 
   return (
-    <section className="py-36 px-6">
+    <section id="projects" className="py-36 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-24 text-center">
+        <div className="mb-16 text-center">
           <h2 className="text-4xl md:text-6xl font-semibold mb-6 tracking-tight">
             Selected Projects
           </h2>
@@ -184,7 +184,6 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* horizontal cinematic layout */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {projects.map((project) => (
             <ProjectCard

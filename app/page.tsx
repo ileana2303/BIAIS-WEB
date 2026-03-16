@@ -8,7 +8,7 @@ import TrustedBy from "@/components/trusted-by"
 export default function Home() {
   return (
     <main>
-        <Hero />
+      <Hero />
       <Services />
       <Projects />
       <TrustedBy />
