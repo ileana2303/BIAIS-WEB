@@ -31,17 +31,34 @@ export default function Hero() {
         </p>
 
         <div className="mt-12 flex justify-center gap-6">
-          <button
-            data-cursor-theme="dark"
-            className="px-8 py-4 bg-black text-white rounded-full shadow-sm hover:bg-gray-800"
+          <a
+            href="/contact-us"
+            data-cursor-theme="light"
+            className="px-8 py-4 rounded-full border-2 border-black 
+text-white flex items-center gap-2
+
+bg-[linear-gradient(to_top,black_50%,#FFFAF0_50%)]
+bg-[length:100%_220%] bg-[position:0_100%]
+
+transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+
+hover:bg-[position:0_0] hover:text-black"
           >
             Start Your Project
-          </button>
+          </a>
 
           <a
             href="#projects"
             data-cursor-theme="light"
-            className="px-8 py-4 border bg-white rounded-full shadow-sm hover:bg-gray-50 flex items-center gap-2"
+            className="px-8 py-4 rounded-full border-2 border-black 
+text-black flex items-center gap-2
+
+bg-[linear-gradient(to_top,#FFFAF0_50%,black_50%)]
+bg-[length:100%_220%] bg-[position:0_100%]
+
+transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+
+hover:bg-[position:0_0] hover:text-white"
           >
             Selected Projects ↓
           </a>

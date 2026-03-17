@@ -14,6 +14,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isPrimaryCtaHovered, setIsPrimaryCtaHovered] = useState(false)
   const pathname = usePathname()
   const isContactPage = pathname.startsWith("/contact-us")
 
@@ -59,18 +60,23 @@ export default function Navbar() {
             <div className={isContactPage ? "block" : "hidden md:block"}>
               <Link
                 href="/contact-us"
-                data-cursor-theme="dark"
-                className="rounded-full bg-black px-4 py-2 text-[#FFFAF0] transition hover:bg-gray-800"
+                data-cursor-theme={isPrimaryCtaHovered ? "light" : "dark"}
+                className="rounded-full border-2 border-black bg-[linear-gradient(to_top,black_50%,#FFFAF0_50%)]
+	bg-[length:100%_220%] bg-[position:0_100%] px-4 py-2 text-[#FFFAF0] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+
+hover:bg-[position:0_0] hover:text-black"
+                onMouseEnter={() => setIsPrimaryCtaHovered(true)}
+                onMouseLeave={() => setIsPrimaryCtaHovered(false)}
               >
+
                 Start Your Project
               </Link>
             </div>
 
             <button
               type="button"
-              className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 text-black transition hover:bg-black/5 ${
-                isContactPage ? "" : "md:hidden"
-              }`}
+              className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 text-black transition hover:bg-black/5 ${isContactPage ? "" : "md:hidden"
+                }`}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-navigation"
               aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -81,19 +87,16 @@ export default function Navbar() {
               </span>
               <span className="relative block h-4 w-4">
                 <span
-                  className={`absolute left-0 top-0 block h-0.5 w-4 rounded-full bg-current transition ${
-                    isMobileMenuOpen ? "translate-y-[7px] rotate-45" : ""
-                  }`}
+                  className={`absolute left-0 top-0 block h-0.5 w-4 rounded-full bg-current transition ${isMobileMenuOpen ? "translate-y-[7px] rotate-45" : ""
+                    }`}
                 />
                 <span
-                  className={`absolute left-0 top-[7px] block h-0.5 w-4 rounded-full bg-current transition ${
-                    isMobileMenuOpen ? "opacity-0" : ""
-                  }`}
+                  className={`absolute left-0 top-[7px] block h-0.5 w-4 rounded-full bg-current transition ${isMobileMenuOpen ? "opacity-0" : ""
+                    }`}
                 />
                 <span
-                  className={`absolute left-0 top-[14px] block h-0.5 w-4 rounded-full bg-current transition ${
-                    isMobileMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
-                  }`}
+                  className={`absolute left-0 top-[14px] block h-0.5 w-4 rounded-full bg-current transition ${isMobileMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+                    }`}
                 />
               </span>
             </button>
@@ -103,11 +106,10 @@ export default function Navbar() {
         {isMobileMenuOpen ? (
           <div
             id="mobile-navigation"
-            className={`absolute top-full mt-3 rounded-[1.75rem] border border-black/5 bg-[#FFFAF0] p-4 shadow-lg ${
-              isContactPage
-                ? "right-0 w-80 max-w-[calc(100vw-2rem)]"
-                : "inset-x-0 md:hidden"
-            }`}
+            className={`absolute top-full mt-3 rounded-[1.75rem] border border-black/5 bg-[#FFFAF0] p-4 shadow-lg ${isContactPage
+              ? "right-0 w-80 max-w-[calc(100vw-2rem)]"
+              : "inset-x-0 md:hidden"
+              }`}
           >
             <div className="flex flex-col gap-2 text-base font-medium text-gray-700">
               {navLinks.map((link) => (
