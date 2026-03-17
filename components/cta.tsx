@@ -9,11 +9,11 @@ export default function CTA() {
 
       <Container>
 
-        <div className="text-center mb-16 text-sm tracking-wide text-black flex items-center justify-center gap-3">
+        <h2 className="text-center mb-16 text-sm tracking-wide text-black font-bold flex items-center justify-center gap-3">
           <span className="w-2 h-2 bg-black rounded-full" />
           LET'S CREATE SOMETHING AWESOME
           <span className="w-2 h-2 bg-black rounded-full" />
-        </div>
+        </h2>
 
         <div className="grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2">
 

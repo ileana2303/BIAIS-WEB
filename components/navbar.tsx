@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Container from "./layout/container"
 
 const navLinks = [
@@ -15,13 +15,90 @@ const navLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isPrimaryCtaHovered, setIsPrimaryCtaHovered] = useState(false)
+  const [isProjectsInView, setIsProjectsInView] = useState(false)
+  const [isRevealZoneActive, setIsRevealZoneActive] = useState(false)
+  const [canHover, setCanHover] = useState(false)
   const pathname = usePathname()
+  const isHomePage = pathname === "/"
   const isContactPage = pathname.startsWith("/contact-us")
+  const hideNavbar =
+    isHomePage &&
+    canHover &&
+    isProjectsInView &&
+    !isRevealZoneActive &&
+    !isMobileMenuOpen
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false)
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover)")
+    const updateCanHover = () => setCanHover(mediaQuery.matches)
+
+    updateCanHover()
+
+    mediaQuery.addEventListener("change", updateCanHover)
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateCanHover)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isHomePage) {
+      setIsProjectsInView(false)
+      return
+    }
+
+    const projectsSection = document.getElementById("projects")
+    if (!projectsSection) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsProjectsInView(entry.isIntersecting)
+      },
+      {
+        threshold: 0.2,
+      }
+    )
+
+    observer.observe(projectsSection)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [isHomePage])
+
+  useEffect(() => {
+    if (!isHomePage || !canHover || !isProjectsInView) {
+      setIsRevealZoneActive(false)
+      return
+    }
+
+    const handleMouseMove = (event: MouseEvent) => {
+      setIsRevealZoneActive(event.clientY <= 112)
+    }
+
+    const handleMouseLeave = () => {
+      setIsRevealZoneActive(false)
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+    document.addEventListener("mouseleave", handleMouseLeave)
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+      document.removeEventListener("mouseleave", handleMouseLeave)
+    }
+  }, [canHover, isHomePage, isProjectsInView])
+
   return (
-    <Container className="sticky top-4 z-50 mt-4 sm:mt-6">
+    <Container
+      className={`sticky top-4 z-50 mt-4 transition-all duration-200 sm:mt-6 ${
+        hideNavbar
+          ? "pointer-events-none -translate-y-4 opacity-0"
+          : "translate-y-0 opacity-100"
+      }`}
+    >
       <nav className="relative mx-auto max-w-full rounded-[2rem] bg-[#FFFAF0] px-4 py-3 sm:px-6">
         <div className="flex items-center justify-between gap-4">
           <Link

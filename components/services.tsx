@@ -12,7 +12,11 @@ export default function Services() {
   return (
     <section id="services" className="py-28">
       <Container>
-        <h2 className="mb-16 text-center text-4xl md:text-6xl font-semibold">Services</h2>
+        <div className="text-center mb-16 text-sm tracking-wide text-black font-bold flex items-center justify-center gap-3">
+          <span className="w-2 h-2 bg-black rounded-full" />
+          OUR SERVICES
+          <span className="w-2 h-2 bg-black rounded-full" />
+        </div>
 
         <div className="grid gap-10 md:grid-cols-5">
           {services.map((service) => (
