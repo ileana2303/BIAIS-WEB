@@ -168,14 +168,10 @@ export default function Navbar() {
               <Link
                 href="/contact-us"
                 data-cursor-theme={isPrimaryCtaHovered ? "light" : "dark"}
-                className="rounded-full border-2 border-black bg-[linear-gradient(to_top,black_50%,#FFFAF0_50%)]
-	bg-[length:100%_220%] bg-[position:0_100%] px-4 py-2 text-[#FFFAF0] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
-
-hover:bg-[position:0_0] hover:text-black"
+                className="rounded-full border-2 border-black bg-[linear-gradient(to_top,black_50%,#FFFAF0_50%)] bg-[length:100%_220%] bg-[position:0_100%] px-4 py-2 text-[#FFFAF0] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[position:0_0] hover:text-black"
                 onMouseEnter={() => setIsPrimaryCtaHovered(true)}
                 onMouseLeave={() => setIsPrimaryCtaHovered(false)}
               >
-
                 Start Your Project
               </Link>
             </div>

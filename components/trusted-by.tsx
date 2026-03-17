@@ -1,45 +1,42 @@
-"use client"
+"use client";
 
 export default function TrustedBy() {
-
-    const companies = [
-        "Cloudly",
-        "A.I.",
-        "Startup",
-        "Apply",
-        "Software",
-    ]
+    const logos = [
+        "OpenAI",
+        "AWS",
+        "Stripe",
+        "Notion",
+        "Vercel",
+        "Shopify",
+    ];
 
     return (
-        <div className="mt-24 w-full overflow-hidden">
-
-            <p className="text-center text-sm uppercase tracking-widest text-gray-400 mb-10">
-                Trusted by innovative teams
+        <section className="py-20 overflow-hidden">
+            {/* Label */}
+            <p className="text-center text-xs tracking-[0.25em] text-gray-400 mb-10">
+                TRUSTED BY INNOVATIVE TEAMS
             </p>
 
-            {/* Logo container */}
-            <div className="relative w-full">
+            {/* Scrolling container */}
+            <div className="relative w-full overflow-hidden">
+                <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-[#FFFAF0] to-transparent z-10" />
+                <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-[#FFFAF0] to-transparent z-10" />
 
-                {/* Gradient fades */}
-                <div className="absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-white to-transparent z-10" />
-                <div className="absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-white to-transparent z-10" />
-
-                {/* Moving logos */}
                 <div className="flex gap-16 animate-scroll whitespace-nowrap">
-
-                    {[...companies, ...companies].map((company, index) => (
-                        <div
-                            key={index}
-                            className="text-lg md:text-xl font-semibold text-gray-500 hover:text-black transition duration-300"
+                    {[...logos, ...logos].map((logo, i) => (
+                        <span
+                            key={i}
+                            className="text-gray-500 text-sm md:text-base font-medium tracking-wide opacity-50 hover:opacity-100 transition duration-300"
                         >
-                            {company}
-                        </div>
+                            {logo}
+                        </span>
                     ))}
-
                 </div>
-
             </div>
-
-        </div>
-    )
+            
+            <p className="text-center text-sm text-gray-500 mt-10">
+                Supporting teams from early-stage startups to enterprise platforms
+            </p>
+        </section>
+    );
 }

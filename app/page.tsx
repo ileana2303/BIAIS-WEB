@@ -11,8 +11,7 @@ export default function Home() {
       <Hero />
       <Services />
       <Projects />
-      <TrustedBy />
-      <Process />
+      {/* <TrustedBy /> */}
       <CTA />
     </main>
   )

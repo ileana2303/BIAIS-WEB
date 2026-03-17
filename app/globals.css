@@ -3,17 +3,21 @@
 @tailwind utilities;
 
 @keyframes scroll {
-  from {
-    transform: translateX(0);
+  0% {
+    transform: translateX(0%);
   }
 
-  to {
+  100% {
     transform: translateX(-50%);
   }
 }
 
 .animate-scroll {
-  animation: scroll 18s linear infinite;
+  animation: scroll 25s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
 }
 
 body {
@@ -78,6 +82,7 @@ body {
 }
 
 @media (pointer: fine) {
+
   .has-custom-cursor,
   .has-custom-cursor body,
   .has-custom-cursor a,
