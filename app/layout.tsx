@@ -1,6 +1,7 @@
 import "./globals.css"
 import type { Metadata } from "next"
 import type { ReactNode } from "react"
+import CustomCursor from "@/components/custom-cursor"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#FFFAF0] text-black ">
+        <CustomCursor />
         <Navbar />
         {children}
         <Footer />

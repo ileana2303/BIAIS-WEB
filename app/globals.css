@@ -19,3 +19,75 @@
 body {
   font-family: system-ui, sans-serif;
 }
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: none;
+  height: 28px;
+  width: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #000000;
+  color: #fffaf0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-50%, -50%, 0);
+  transition:
+    width 180ms ease,
+    height 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease,
+    box-shadow 180ms ease;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.custom-cursor__arrow {
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.custom-cursor[data-theme="dark"] {
+  background: #fffaf0;
+  color: #000000;
+  box-shadow: 0 12px 32px rgba(255, 250, 240, 0.18);
+}
+
+.custom-cursor[data-interactive="true"] {
+  height: 56px;
+  width: 56px;
+}
+
+.custom-cursor[data-interactive="true"] .custom-cursor__arrow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.custom-cursor[data-pressed="true"] {
+  height: 48px;
+  width: 48px;
+}
+
+@media (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor body,
+  .has-custom-cursor a,
+  .has-custom-cursor button,
+  .has-custom-cursor summary,
+  .has-custom-cursor [data-cursor-interactive="true"] {
+    cursor: none !important;
+  }
+
+  .custom-cursor {
+    display: inline-flex;
+  }
+}

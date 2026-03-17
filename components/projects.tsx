@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Container from "./layout/container";
 
 const projects = [
   {
@@ -26,6 +27,14 @@ const projects = [
     tech: ["React Native", "GraphQL", "AWS"],
     image: "/projects/test.jpg",
     video: "/projects/test2.mp4",
+  },
+  {
+    title: "Mobile SaaS",
+    description:
+      "Real-time analytics dashboard powering cross-platform mobile applications.",
+    tech: ["React Native", "GraphQL", "AWS"],
+    image: "/projects/colai.jpg",
+    video: "/projects/colai-preview.mp4",
   },
 ];
 
@@ -67,6 +76,8 @@ function ProjectCard({ project, onOpen }) {
   return (
     <div
       ref={cardRef}
+      data-cursor-interactive="true"
+      data-cursor-theme="dark"
       onMouseEnter={handleEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleLeave}
@@ -95,7 +106,6 @@ function ProjectCard({ project, onOpen }) {
             }`}
         />
 
-        {/* Apple style light reflection */}
         <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(180px_180px_at_var(--x)_var(--y),rgba(255,255,255,0.18),transparent_60%)]" />
 
       </div>
@@ -127,10 +137,14 @@ function ProjectModal({ project, onClose }) {
 
   return (
 
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-lg p-6">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-lg p-6"
+      data-cursor-theme="dark"
+    >
       <div className="relative max-w-5xl w-full bg-black rounded-3xl overflow-hidden shadow-2xl">
         <button
           onClick={onClose}
+          data-cursor-theme="dark"
           className="absolute top-6 right-6 text-white/70 hover:text-white"
         >
           Close
@@ -173,9 +187,9 @@ export default function Projects() {
 
   return (
 
-    <section id="projects" className="bg-black py-36 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-16 text-center">
+    <section id="projects" className="bg-black py-36" data-cursor-theme="dark">
+      <Container>
+        <div className="mb-12 text-center">
           <h2 className="text-[#FFFAF0] text-4xl md:text-6xl font-semibold mb-6 tracking-tight">
             Selected Projects
           </h2>
@@ -186,7 +200,7 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-4">
           {projects.map((project) => (
             <ProjectCard
               key={project.title}
@@ -200,7 +214,7 @@ export default function Projects() {
           project={activeProject}
           onClose={() => setActiveProject(null)}
         />
-      </div>
+      </Container>
     </section>
   );
 }

@@ -31,12 +31,16 @@ export default function Hero() {
         </p>
 
         <div className="mt-12 flex justify-center gap-6">
-          <button className="px-8 py-4 bg-black text-white rounded-full shadow-sm hover:bg-gray-800">
+          <button
+            data-cursor-theme="dark"
+            className="px-8 py-4 bg-black text-white rounded-full shadow-sm hover:bg-gray-800"
+          >
             Start Your Project
           </button>
 
           <a
             href="#projects"
+            data-cursor-theme="light"
             className="px-8 py-4 border bg-white rounded-full shadow-sm hover:bg-gray-50 flex items-center gap-2"
           >
             Selected Projects ↓
