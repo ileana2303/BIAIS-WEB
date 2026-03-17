@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Container from "./layout/container"
 
 const navLinks = [
@@ -15,16 +15,17 @@ const navLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isPrimaryCtaHovered, setIsPrimaryCtaHovered] = useState(false)
-  const [isProjectsInView, setIsProjectsInView] = useState(false)
+  const [hasPassedHeroBoundary, setHasPassedHeroBoundary] = useState(false)
+  const [isScrollingUp, setIsScrollingUp] = useState(false)
   const [isRevealZoneActive, setIsRevealZoneActive] = useState(false)
   const [canHover, setCanHover] = useState(false)
+  const lastScrollY = useRef(0)
   const pathname = usePathname()
-  const isHomePage = pathname === "/"
   const isContactPage = pathname.startsWith("/contact-us")
   const hideNavbar =
-    isHomePage &&
     canHover &&
-    isProjectsInView &&
+    hasPassedHeroBoundary &&
+    !isScrollingUp &&
     !isRevealZoneActive &&
     !isMobileMenuOpen
 
@@ -44,32 +45,53 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    if (!isHomePage) {
-      setIsProjectsInView(false)
-      return
+    const getHideThreshold = () => {
+      const firstSection = document.querySelector("section")
+
+      if (!firstSection) {
+        return Math.max(window.innerHeight * 0.84, 640)
+      }
+
+      const sectionRect = firstSection.getBoundingClientRect()
+      const sectionTop = window.scrollY + sectionRect.top
+      const sectionHeight = firstSection.clientHeight
+
+      return Math.max(sectionTop + sectionHeight + 80, 320)
     }
 
-    const projectsSection = document.getElementById("projects")
-    if (!projectsSection) return
+    const updateNavbarVisibility = () => {
+      const currentScrollY = window.scrollY
+      const hideThreshold = getHideThreshold()
+      const passedBoundary = currentScrollY > hideThreshold
+      const scrollDelta = currentScrollY - lastScrollY.current
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsProjectsInView(entry.isIntersecting)
-      },
-      {
-        threshold: 0.2,
+      setHasPassedHeroBoundary(passedBoundary)
+
+      if (!passedBoundary) {
+        setIsScrollingUp(false)
+      } else if (scrollDelta < -4) {
+        setIsScrollingUp(true)
+      } else if (scrollDelta > 4) {
+        setIsScrollingUp(false)
       }
-    )
 
-    observer.observe(projectsSection)
+      lastScrollY.current = currentScrollY
+    }
+
+    lastScrollY.current = window.scrollY
+    updateNavbarVisibility()
+
+    window.addEventListener("scroll", updateNavbarVisibility, { passive: true })
+    window.addEventListener("resize", updateNavbarVisibility)
 
     return () => {
-      observer.disconnect()
+      window.removeEventListener("scroll", updateNavbarVisibility)
+      window.removeEventListener("resize", updateNavbarVisibility)
     }
-  }, [isHomePage])
+  }, [pathname])
 
   useEffect(() => {
-    if (!isHomePage || !canHover || !isProjectsInView) {
+    if (!canHover || !hasPassedHeroBoundary) {
       setIsRevealZoneActive(false)
       return
     }
@@ -89,7 +111,15 @@ export default function Navbar() {
       window.removeEventListener("mousemove", handleMouseMove)
       document.removeEventListener("mouseleave", handleMouseLeave)
     }
-  }, [canHover, isHomePage, isProjectsInView])
+  }, [canHover, hasPassedHeroBoundary])
+
+  useEffect(() => {
+    if (!hideNavbar && isMobileMenuOpen) return
+
+    if (hideNavbar) {
+      setIsMobileMenuOpen(false)
+    }
+  }, [hideNavbar, isMobileMenuOpen])
 
   return (
     <Container
