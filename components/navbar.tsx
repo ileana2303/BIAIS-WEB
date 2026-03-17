@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react"
 import Container from "./layout/container"
 
 const navLinks = [
+  { href: "/#techorbit", label: "Technology Ecosystem" },
   { href: "/#services", label: "Services" },
   { href: "/#projects", label: "Works" },
   { href: "/#cta", label: "Contact" },

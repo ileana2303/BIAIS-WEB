@@ -1,16 +1,12 @@
 "use client"
 
 import { motion } from "framer-motion"
-import AnimatedGrid from "./animated-grid"
 import Section from "./layout/section"
 import Container from "./layout/container"
 
 export default function Hero() {
   return (
-    <Section className="relative min-h-[90vh] flex items-center overflow-hidden">
-
-      <AnimatedGrid />
-
+    <Section className="relative flex min-h-[72vh] items-center !pt-16 !pb-6 md:min-h-[78vh] md:!pt-20 md:!pb-8">
       <Container className="text-center">
 
         <motion.h1
@@ -25,12 +21,12 @@ export default function Hero() {
           </span>
         </motion.h1>
 
-        <p className="mt-8 text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="mx-auto mt-6 max-w-3xl text-xl text-gray-600">
           We design and develop scalable platforms, AI-powered systems and
           high-performance applications.
         </p>
 
-        <div className="mt-12 flex justify-center gap-6">
+        <div className="mt-8 flex justify-center gap-6">
           <a
             href="/contact-us"
             data-cursor-theme="light"

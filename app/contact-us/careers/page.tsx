@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Careers() {
-    const labelClassName = "text-lg text-[#FFFAF0] tracking-wide";
+    const labelClassName = "text-base tracking-wide text-[#FFFAF0] sm:text-lg";
 
     const [form, setForm] = useState({
         name: "",
@@ -36,22 +36,22 @@ export default function Careers() {
                 aria-hidden="true"
             />
 
-            <section className="relative z-10 h-[calc(100dvh-6rem)] overflow-hidden">
+            <section className="relative z-10 overflow-x-clip pt-28 pb-12 lg:min-h-[calc(100dvh-6rem)] lg:overflow-hidden lg:py-0">
                 <div className="grid h-full grid-cols-1 lg:grid-cols-[50%_50%]">
-                    <div className="flex items-center px-10 lg:px-20">
-                        <div>
-                            <h1 className="text-[90px] md:text-[120px] leading-[0.9] font-semibold text-black">
+                    <div className="flex items-center px-6 pb-10 sm:px-10 lg:px-20 lg:pb-0">
+                        <div className="max-w-xl">
+                            <h1 className="text-[3.5rem] leading-[0.9] font-semibold text-black sm:text-[4.5rem] md:text-[6rem] lg:text-[7.5rem]">
                                 Join our <br /> team
                             </h1>
 
-                            <p className="mt-6 max-w-md text-lg text-gray-600">
+                            <p className="mt-5 max-w-md text-base text-gray-600 sm:mt-6 sm:text-lg">
                                 We are always looking for developers, designers, and AI specialists
                                 who want to build useful products with care.
                             </p>
 
                             <Link
                                 href="/contact-us"
-                                className="inline-block mt-6 text-sm text-gray-500 underline underline-offset-4 hover:text-black transition"
+                                className="mt-6 inline-block text-sm text-gray-500 underline underline-offset-4 transition hover:text-black"
                             >
                                 Want to discuss a project? →
                             </Link>
@@ -59,14 +59,14 @@ export default function Careers() {
                     </div>
 
                     <div
-                        className="bg-black flex items-center justify-center px-6 py-8 lg:bg-transparent"
+                        className="flex items-center justify-center bg-black px-4 py-8 sm:px-6 lg:bg-transparent"
                         data-cursor-theme="dark"
                     >
                         <form
                             onSubmit={handleSubmit}
-                            className="w-full max-w-2xl lg:max-w-3xl border-2 border-[#FFFAF0] rounded-3xl p-10 text-[#FFFAF0]"
+                            className="w-full max-w-2xl rounded-[1.75rem] border-2 border-[#FFFAF0] p-6 text-[#FFFAF0] sm:rounded-3xl sm:p-8 lg:max-w-3xl lg:p-10"
                         >
-                            <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+                            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
                                 <div>
                                     <label className={labelClassName}>
                                         FULL NAME
@@ -75,7 +75,7 @@ export default function Careers() {
                                         name="name"
                                         required
                                         onChange={handleChange}
-                                        className="w-full mt-2 bg-transparent border-b-2 border-[#FFFAF0] py-2 outline-none focus:border-white"
+                                        className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
                                     />
                                 </div>
 
@@ -88,7 +88,7 @@ export default function Careers() {
                                         type="email"
                                         required
                                         onChange={handleChange}
-                                        className="w-full mt-2 bg-transparent border-b-2 border-[#FFFAF0] py-2 outline-none focus:border-white"
+                                        className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
                                     />
                                 </div>
 
@@ -100,7 +100,7 @@ export default function Careers() {
                                         name="phone"
                                         required
                                         onChange={handleChange}
-                                        className="w-full mt-2 bg-transparent border-b-2 border-[#FFFAF0] py-2 outline-none focus:border-white"
+                                        className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
                                     />
                                 </div>
 
@@ -112,7 +112,7 @@ export default function Careers() {
                                         name="country"
                                         value={form.country}
                                         onChange={handleChange}
-                                        className="w-full mt-2 bg-transparent border-b-2 border-[#FFFAF0] py-2 outline-none focus:border-white"
+                                        className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
                                     />
                                 </div>
 
@@ -124,7 +124,7 @@ export default function Careers() {
                                         name="linkedin"
                                         required
                                         onChange={handleChange}
-                                        className="w-full mt-2 bg-transparent border-b-2 border-[#FFFAF0] py-2 outline-none focus:border-white"
+                                        className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
                                     />
                                 </div>
 
@@ -137,14 +137,14 @@ export default function Careers() {
                                         rows={4}
                                         onChange={handleChange}
                                         placeholder="Tell us about your background"
-                                        className="w-full mt-2 bg-transparent border-b-2 border-[#FFFAF0] py-2 outline-none resize-none focus:border-white"
+                                        className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none resize-none focus:border-white"
                                     />
                                 </div>
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full mt-10 border-2 border-[#FFFAF0] py-4 rounded-full hover:bg-[#FFFAF0] hover:text-black transition"
+                                className="mt-8 w-full rounded-full border-2 border-[#FFFAF0] py-4 transition hover:bg-[#FFFAF0] hover:text-black sm:mt-10"
                             >
                                 SEND APPLICATION
                             </button>
