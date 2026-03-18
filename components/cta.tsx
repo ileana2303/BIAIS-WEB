@@ -28,7 +28,7 @@ export default function CTA() {
 
             <Link
               href="/contact-us/careers"
-              className="group mt-16 w-60 h-60 flex items-center justify-center rounded-full bg-[#FFFAF0] text-black text-sm transition-all duration-500 ease-out hover:scale-110 hover:bg-blue-600 hover:text-white hover:font-bold hover:text-2xl"
+              className="group mt-16 w-60 h-60 flex items-center justify-center rounded-full bg-[#FFFAF0] text-black text-sm transition-all duration-500 ease-out hover:scale-110 hover:bg-blue-600 hover:text-white hover:font-bold hover:text-xl"
             >
               <span className="transition-all duration-300 group-hover:tracking-wider">
                 CHECK CAREERS
@@ -48,7 +48,7 @@ export default function CTA() {
 
             <Link
               href="/contact-us"
-              className="group mt-16 w-60 h-60 flex items-center justify-center rounded-full bg-[#FFFAF0] text-black text-sm transition-all duration-500 ease-out hover:scale-110 hover:bg-green-600 hover:text-white hover:font-bold hover:text-2xl"
+              className="group mt-16 w-60 h-60 flex items-center justify-center rounded-full bg-[#FFFAF0] text-black text-sm transition-all duration-500 ease-out hover:scale-110 hover:bg-green-600 hover:text-white hover:font-bold hover:text-xl"
             >
               <span className="transition-all duration-300 group-hover:tracking-wider">
                 CONTACT US

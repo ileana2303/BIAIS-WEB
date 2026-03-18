@@ -13,6 +13,14 @@ const projects = [
     video: "/projects/colai-preview.mp4",
   },
   {
+    title: "Mobile SaaS",
+    description:
+      "Real-time analytics dashboard powering cross-platform mobile applications.",
+    tech: ["React Native", "GraphQL", "AWS"],
+    image: "/projects/e-order-demo.jpg",
+    video: "/projects/e-order-demo.mp4",
+  },
+  {
     title: "Marketplace Platform",
     description:
       "Scalable B2B marketplace with advanced search, payments and analytics.",
@@ -28,14 +36,7 @@ const projects = [
     image: "/projects/test.jpg",
     video: "/projects/test2.mp4",
   },
-  {
-    title: "Mobile SaaS",
-    description:
-      "Real-time analytics dashboard powering cross-platform mobile applications.",
-    tech: ["React Native", "GraphQL", "AWS"],
-    image: "/projects/colai.jpg",
-    video: "/projects/colai-preview.mp4",
-  },
+
 ];
 
 const featuredProjects = [
@@ -45,6 +46,13 @@ const featuredProjects = [
       "A flagship delivery unifying product, automation and AI systems into one scalable platform.",
     tech: ["Next.js", "OpenAI", "Automation", "Cloud"],
     image: "/projects/featured.jpg",
+  },
+  {
+    title: "Connected Commerce Ecosystem",
+    description:
+      "A major multi-surface platform aligning customer journeys, operational data and AI-assisted workflows across the business.",
+    tech: ["React", "Node", "AI Workflows", "Analytics"],
+    image: "/projects/colai-demo.jpg",
   },
   {
     title: "Connected Commerce Ecosystem",
@@ -98,7 +106,7 @@ function ProjectCard({ project, onOpen, featured = false }) {
       onMouseEnter={handleEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleLeave}
-      onClick={() => onOpen(project)}
+      onClick={() => onOpen({ ...project, featured })}
       className={`group relative cursor-pointer overflow-hidden rounded-[28px] border-[1.5px] border-white/10 bg-neutral-950 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out transform-gpu will-change-transform hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_30px_80px_rgba(0,0,0,0.28)] ${featured ? "md:col-span-2 xl:col-span-4" : ""
         }`}
     >
@@ -182,34 +190,70 @@ function ProjectCard({ project, onOpen, featured = false }) {
 function ProjectModal({ project, onClose }) {
   if (!project) return null;
 
+  const isFeatured = Boolean(project.featured);
+
   return (
 
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-lg p-6"
       data-cursor-theme="dark"
+      onClick={onClose}
     >
-      <div className="relative max-w-5xl w-full bg-black rounded-3xl overflow-hidden shadow-2xl">
+      <div
+        className={`relative w-full overflow-hidden border border-white/10 bg-black shadow-2xl ${isFeatured
+          ? "max-w-[96rem] rounded-[32px]"
+          : "max-w-sm rounded-[36px] sm:max-w-md"
+          }`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
+          type="button"
           onClick={onClose}
           data-cursor-theme="dark"
-          className="absolute top-6 right-6 text-white/70 hover:text-white"
+          className="absolute right-4 top-4 z-20 text-white/70 hover:text-white sm:right-5 sm:top-5"
         >
           Close
         </button>
 
-        <video
-          src={project.video}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full aspect-video object-cover"
-        />
+        {isFeatured ? (
+          <div className="p-4 pt-14 sm:p-5 sm:pt-16">
+            <div className="overflow-hidden rounded-[24px] border border-white/10 bg-neutral-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                <div className="ml-3 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/45">
+                  Web Preview
+                </div>
+              </div>
 
-        <div className="p-10 text-white">
-          <h3 className="text-3xl font-semibold mb-4">{project.title}</h3>
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full aspect-[16/7] object-cover object-top"
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="px-3 pb-3 pt-12 sm:px-4 sm:pb-4 sm:pt-14">
+            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-neutral-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+              <video
+                src={project.video}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full aspect-[9/19.5] object-cover object-top"
+              />
+            </div>
+          </div>
+        )}
 
-          <p className="text-white/70 mb-6 max-w-2xl leading-relaxed">
+        <div className={`text-white ${isFeatured ? "p-6 pt-2 sm:p-8 sm:pt-3" : "p-6 pt-4 sm:p-8 sm:pt-5"
+          }`}>
+          <h3 className="mb-4 text-2xl font-semibold sm:text-3xl">{project.title}</h3>
+
+          <p className="mb-6 leading-relaxed text-white/70">
             {project.description}
           </p>
 
@@ -234,7 +278,7 @@ export default function Projects() {
 
   return (
 
-    <section id="projects" className="py-32" data-cursor-theme="dark">
+    <section id="projects" className="py-32" data-cursor-theme="light">
       <Container>
         <div className="mb-12 text-center">
           <h2 className="mb-6 flex items-center justify-center gap-3 text-center text-sm font-bold tracking-wide text-black">
