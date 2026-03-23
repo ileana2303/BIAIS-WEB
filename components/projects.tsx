@@ -52,14 +52,7 @@ const featuredProjects = [
     description:
       "A major multi-surface platform aligning customer journeys, operational data and AI-assisted workflows across the business.",
     tech: ["React", "Node", "AI Workflows", "Analytics"],
-    image: "/projects/colai-demo.jpg",
-  },
-  {
-    title: "Connected Commerce Ecosystem",
-    description:
-      "A major multi-surface platform aligning customer journeys, operational data and AI-assisted workflows across the business.",
-    tech: ["React", "Node", "AI Workflows", "Analytics"],
-    image: "/projects/featured2.jpg",
+    image: "/projects/ilarq.jpg",
   },
 ];
 
@@ -113,13 +106,16 @@ function ProjectCard({ project, onOpen, featured = false }) {
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_28%,transparent_72%,rgba(255,255,255,0.04))] opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
 
       <div
-        className={`relative w-full ${featured ? "aspect-[4/5] md:aspect-[16/7]" : "aspect-[9/16]"
+        className={`relative w-full ${featured ? "aspect-[4/5] md:aspect-[16/7]" : "aspect-[9/18]"
           }`}
       >
         <img
           src={project.image}
           alt={project.title}
-          className="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.04] group-hover:saturate-[1.08]"
+          className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:saturate-[1.08] ${featured
+            ? "object-top group-hover:scale-[1.02]"
+            : "object-top group-hover:scale-[1.015]"
+            }`}
         />
 
         {project.video ? (
@@ -131,7 +127,7 @@ function ProjectCard({ project, onOpen, featured = false }) {
             loop
             playsInline
             preload="auto"
-            className={`absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.04] ${hovered ? "scale-100 opacity-100" : "scale-[1.02] opacity-0"
+            className={`absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-out ${featured ? "group-hover:scale-[1.03]" : "object-top group-hover:scale-[1.015]"} ${hovered ? "scale-100 opacity-100" : "scale-[1.005] opacity-0"
               }`}
           />
         ) : null}
