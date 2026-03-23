@@ -48,11 +48,12 @@ const featuredProjects = [
     image: "/projects/featured.jpg",
   },
   {
-    title: "Connected Commerce Ecosystem",
+    title: "Architectural Studio Website",
     description:
       "A major multi-surface platform aligning customer journeys, operational data and AI-assisted workflows across the business.",
-    tech: ["React", "Node", "AI Workflows", "Analytics"],
+    tech: ["React", "Node", "Cloud"],
     image: "/projects/ilarq.jpg",
+    href: "https://ilarq.vercel.app/",
   },
 ];
 
@@ -91,6 +92,15 @@ function ProjectCard({ project, onOpen, featured = false }) {
     }
   };
 
+  const handleClick = () => {
+    if (project.href) {
+      window.location.assign(project.href);
+      return;
+    }
+
+    onOpen({ ...project, featured });
+  };
+
   return (
     <div
       ref={cardRef}
@@ -99,7 +109,7 @@ function ProjectCard({ project, onOpen, featured = false }) {
       onMouseEnter={handleEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleLeave}
-      onClick={() => onOpen({ ...project, featured })}
+      onClick={handleClick}
       className={`group relative cursor-pointer overflow-hidden rounded-[28px] border-[1.5px] border-white/10 bg-neutral-950 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out transform-gpu will-change-transform hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_30px_80px_rgba(0,0,0,0.28)] ${featured ? "md:col-span-2 xl:col-span-4" : ""
         }`}
     >
