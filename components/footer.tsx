@@ -41,8 +41,8 @@ export default function Footer() {
               <h4 className="mb-4 font-semibold">Company</h4>
               <ul className="space-y-2 text-sm text-gray-500">
                 <li className="transition hover:text-black">About</li>
-                <li className="transition hover:text-black">Work</li>
-                <li className="transition hover:text-black">Blog</li>
+                <li className="transition hover:text-black">Team</li>
+                <li className="transition hover:text-black">ΑΦΜ 802953435</li>
               </ul>
             </div>
 
@@ -52,7 +52,7 @@ export default function Footer() {
                 <li className="transition hover:text-black">LinkedIn</li>
                 <li className="transition hover:text-black">GitHub</li>
                 <li className="transition hover:text-black">
-                  info@nostosenteprises.com
+                   info@nostosenteprises.com
                 </li>
               </ul>
             </div>

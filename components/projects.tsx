@@ -110,7 +110,7 @@ function ProjectCard({ project, onOpen, featured = false }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleLeave}
       onClick={handleClick}
-      className={`group relative cursor-pointer overflow-hidden rounded-[28px] border-[1.5px] border-white/10 bg-neutral-950 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out transform-gpu will-change-transform hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_30px_80px_rgba(0,0,0,0.28)] ${featured ? "md:col-span-2 xl:col-span-4" : ""
+      className={`group relative cursor-pointer overflow-hidden rounded-[28px]  bg-neutral-950 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out transform-gpu will-change-transform hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_30px_80px_rgba(0,0,0,0.28)] ${featured ? "md:col-span-2 xl:col-span-4" : ""
         }`}
     >
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_28%,transparent_72%,rgba(255,255,255,0.04))] opacity-60 transition-opacity duration-500 group-hover:opacity-100" />

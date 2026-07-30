@@ -12,6 +12,8 @@ const tech = [
     "React",
     "Next.js",
     "Stripe",
+    "PowerBI",
+    "PowerApps",
 ];
 
 const accentLabelClasses = [
