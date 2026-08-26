@@ -10,6 +10,7 @@ export default function ContactUs() {
         name: "",
         email: "",
         phone: "",
+        subject: "",
         company: "",
         country: "Greece",
         message: "",
@@ -30,7 +31,18 @@ export default function ContactUs() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log(form);
+        const subject = `BIAIS website: ${form.subject}`;
+        const body = [
+            `Name: ${form.name}`,
+            `Email: ${form.email}`,
+            `Phone: ${form.phone}`,
+            `Company: ${form.company}`,
+            "",
+            "Message:",
+            form.message,
+        ].join("\n");
+
+        window.location.href = `mailto:info@nostosenteprises.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
     return (
@@ -84,6 +96,7 @@ export default function ContactUs() {
                                     </label>
                                     <input
                                         name="name"
+                                        value={form.name}
                                         required
                                         onChange={handleChange}
                                         className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
@@ -97,6 +110,7 @@ export default function ContactUs() {
                                     <input
                                         name="email"
                                         type="email"
+                                        value={form.email}
                                         required
                                         onChange={handleChange}
                                         className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
@@ -109,6 +123,7 @@ export default function ContactUs() {
                                     </label>
                                     <input
                                         name="phone"
+                                        value={form.phone}
                                         required
                                         onChange={handleChange}
                                         className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
@@ -119,8 +134,14 @@ export default function ContactUs() {
                                     <label className={labelClassName}>
                                         SUBJECT
                                     </label>
-                                    <select className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 text-[#FFFAF0] focus:outline-none">
-                                        <option>Select one of the following</option>
+                                    <select
+                                        name="subject"
+                                        value={form.subject}
+                                        required
+                                        onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                                        className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 text-[#FFFAF0] focus:outline-none"
+                                    >
+                                        <option value="" disabled>Select one of the following</option>
                                         <option>Project Inquiry</option>
                                         <option>Partnership</option>
                                         <option>General Question</option>
@@ -133,6 +154,7 @@ export default function ContactUs() {
                                     </label>
                                     <input
                                         name="company"
+                                        value={form.company}
                                         required
                                         onChange={handleChange}
                                         className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
@@ -145,6 +167,7 @@ export default function ContactUs() {
                                     </label>
                                     <textarea
                                         name="message"
+                                        value={form.message}
                                         rows={4}
                                         onChange={handleChange}
                                         placeholder="Write your message"

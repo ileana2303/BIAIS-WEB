@@ -26,7 +26,19 @@ export default function Careers() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log(form);
+        const subject = `BIAIS career application from ${form.name}`;
+        const body = [
+            `Name: ${form.name}`,
+            `Email: ${form.email}`,
+            `Phone: ${form.phone}`,
+            `Country: ${form.country}`,
+            `LinkedIn / Portfolio: ${form.linkedin}`,
+            "",
+            "Message:",
+            form.message,
+        ].join("\n");
+
+        window.location.href = `mailto:info@nostosenteprises.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
     return (
@@ -73,6 +85,7 @@ export default function Careers() {
                                     </label>
                                     <input
                                         name="name"
+                                        value={form.name}
                                         required
                                         onChange={handleChange}
                                         className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
@@ -86,6 +99,7 @@ export default function Careers() {
                                     <input
                                         name="email"
                                         type="email"
+                                        value={form.email}
                                         required
                                         onChange={handleChange}
                                         className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
@@ -98,6 +112,7 @@ export default function Careers() {
                                     </label>
                                     <input
                                         name="phone"
+                                        value={form.phone}
                                         required
                                         onChange={handleChange}
                                         className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
@@ -122,6 +137,7 @@ export default function Careers() {
                                     </label>
                                     <input
                                         name="linkedin"
+                                        value={form.linkedin}
                                         required
                                         onChange={handleChange}
                                         className="mt-2 w-full rounded-none border-b-2 border-[#FFFAF0] bg-transparent py-2 outline-none focus:border-white"
@@ -134,6 +150,7 @@ export default function Careers() {
                                     </label>
                                     <textarea
                                         name="message"
+                                        value={form.message}
                                         rows={4}
                                         onChange={handleChange}
                                         placeholder="Tell us about your background"
