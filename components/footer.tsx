@@ -49,10 +49,33 @@ export default function Footer() {
             <div>
               <h4 className="mb-4 font-semibold">Contact</h4>
               <ul className="space-y-2 text-sm text-gray-500">
-                <li className="transition hover:text-black">LinkedIn</li>
-                <li className="transition hover:text-black">GitHub</li>
-                <li className="transition hover:text-black">
-                   info@nostosenteprises.com
+                <li>
+                  <a
+                    href="https://www.linkedin.com/company/biais-software-development/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-black"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/ileana2303"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-black"
+                  >
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:info@nostosenteprises.com"
+                    className="transition hover:text-black"
+                  >
+                    Email
+                  </a>
                 </li>
               </ul>
             </div>
