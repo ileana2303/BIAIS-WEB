@@ -31,11 +31,13 @@ export default function InteractiveLearning() {
       className="pb-24 pt-10 sm:pb-28 sm:pt-12 lg:pb-32"
     >
       <Container>
-        <h2 className="mb-12 flex items-center justify-center gap-3 text-center text-sm font-bold tracking-wide text-black">
-          <span className="h-2 w-2 rounded-full bg-black" />
-          INTERACTIVE LEARNING
-          <span className="h-2 w-2 rounded-full bg-black" />
-        </h2>
+        <div className="mb-12 flex items-center justify-center gap-4">
+          <h2 className="flex items-center justify-center gap-3 text-center text-sm font-bold tracking-wide text-black">
+            <span className="h-2 w-2 rounded-full bg-black" />
+            INTERACTIVE LEARNING
+            <span className="h-2 w-2 rounded-full bg-black" />
+          </h2>
+        </div>
       </Container>
 
       <div
@@ -43,7 +45,7 @@ export default function InteractiveLearning() {
         data-cursor-theme="dark"
       >
         <Container>
-        <div className="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 xl:gap-24">
+        <div className="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 xl:gap-32 2xl:gap-40">
           <div className="max-w-2xl">
             <div className="mb-7 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-[#FFFAF0]/70">
               <span className="h-2 w-2 rounded-full bg-[#b6f06c]" />
@@ -91,11 +93,12 @@ export default function InteractiveLearning() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-3xl lg:mx-0">
-            <div className="absolute -left-20 top-12 h-56 w-56 rounded-full bg-[#b6f06c]/15 blur-3xl" />
-            <div className="absolute -bottom-20 right-0 h-64 w-64 rounded-full bg-violet-500/15 blur-3xl" />
+          <div className="mx-auto w-full max-w-3xl lg:mx-0">
+            <div className="relative">
+              <div className="absolute -left-20 top-12 h-56 w-56 rounded-full bg-[#b6f06c]/15 blur-3xl" />
+              <div className="absolute -bottom-20 right-0 h-64 w-64 rounded-full bg-violet-500/15 blur-3xl" />
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-[#151515] p-2 shadow-[0_32px_100px_rgba(0,0,0,0.5)] sm:p-3">
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-[#151515] p-2 shadow-[0_32px_100px_rgba(0,0,0,0.5)] sm:p-3">
               <div className="overflow-hidden rounded-[1.55rem] border border-white/10 bg-[#f5f2ea] text-black">
                 <div className="flex items-center justify-between border-b border-black/10 px-4 py-3 sm:px-5">
                   <div className="flex items-center gap-2">
@@ -226,18 +229,35 @@ export default function InteractiveLearning() {
                   </div>
                 </div>
               </div>
+              </div>
+
+              <div className="absolute -bottom-5 -left-3 hidden items-center gap-3 rounded-2xl border border-white/15 bg-[#202020]/95 px-4 py-3 shadow-2xl backdrop-blur md:flex">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#b6f06c] text-black">
+                  <Check className="h-4 w-4" />
+                </span>
+                <span>
+                  <span className="block text-[10px] uppercase tracking-[0.15em] text-white/40">
+                    Accessible by design
+                  </span>
+                  <span className="text-sm font-medium text-white">Responsive learning</span>
+                </span>
+              </div>
             </div>
 
-            <div className="absolute -bottom-5 -left-3 hidden items-center gap-3 rounded-2xl border border-white/15 bg-[#202020]/95 px-4 py-3 shadow-2xl backdrop-blur md:flex">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#b6f06c] text-black">
-                <Check className="h-4 w-4" />
-              </span>
-              <span>
-                <span className="block text-[10px] uppercase tracking-[0.15em] text-white/40">
-                  Accessible by design
-                </span>
-                <span className="text-sm font-medium text-white">Responsive learning</span>
-              </span>
+            <div
+              className="mt-8 flex items-center justify-end gap-3"
+              aria-label="Learning platforms"
+            >
+              <img
+                src="/projects/h5p-logo-box.webp"
+                alt="H5P"
+                className="h-14 w-14 shrink-0 rounded-2xl [0_14px_32px_rgba(0,0,0,0.35)] sm:h-16 sm:w-16"
+              />
+              <img
+                src="/projects/moodle45.png"
+                alt="Moodle 4.5"
+                className="h-14 w-14 shrink-0 rounded-2xl [0_14px_32px_rgba(0,0,0,0.35)] sm:h-16 sm:w-16"
+              />
             </div>
           </div>
         </div>
