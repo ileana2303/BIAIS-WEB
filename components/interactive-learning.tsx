@@ -45,7 +45,7 @@ export default function InteractiveLearning() {
         <Container>
         <div className="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 xl:gap-24">
           <div className="max-w-2xl">
-            <div className="mb-7 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-[#FFFAF0]/60">
+            <div className="mb-7 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-[#FFFAF0]/70">
               <span className="h-2 w-2 rounded-full bg-[#b6f06c]" />
               Digital learning experiences
             </div>
@@ -55,7 +55,7 @@ export default function InteractiveLearning() {
               <span className="block text-[#b6f06c]">Learning</span>
             </h2>
 
-            <div className="mt-8 space-y-5 text-base leading-7 text-white/65 sm:text-lg sm:leading-8">
+            <div className="mt-8 space-y-5 text-base leading-7 text-[#FFFAF0]/90 sm:text-lg sm:leading-8">
               <p>
                 We design and develop interactive digital learning experiences
                 using Moodle LMS and the H5P multimedia framework.
@@ -75,7 +75,7 @@ export default function InteractiveLearning() {
             </div>
 
             <div className="mt-9 border-t border-white/15 pt-7">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#FFFAF0]/70">
                 Technology
               </p>
               <div className="flex flex-wrap gap-2.5">

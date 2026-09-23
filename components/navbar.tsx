@@ -8,6 +8,7 @@ import Container from "./layout/container"
 
 const navLinks = [
   { href: "/#techorbit", label: "Technology Ecosystem" },
+  { href: "/#interactive-learning", label: "Interactive Learning" },
   { href: "/#services", label: "Services" },
   { href: "/#projects", label: "Works" },
   { href: "/#cta", label: "Contact" },
