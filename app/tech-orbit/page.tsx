@@ -31,7 +31,7 @@ export default function TechOrbit() {
     return (
         <section
             id="techorbit"
-            className="flex flex-col items-center px-6 py-24 sm:py-28"
+            className="flex flex-col items-center px-6 pb-10 pt-24 sm:pb-12 sm:pt-28"
         >
 
             <h2 className="mb-6 flex items-center justify-center gap-3 text-center text-sm font-bold tracking-wide text-black">

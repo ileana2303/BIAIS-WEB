@@ -1,27 +1,29 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Container from "./layout/container";
 
 const projects = [
   {
-    title: "AI Document Intelligence",
+    title: "ColAI — AI-Powered Healthcare Operations",
     description:
-      "Automated document processing platform using machine learning pipelines.",
-    tech: ["React", "Python", "AWS", "OpenAI"],
+      "A cross-platform iOS and Android healthcare operations app that transforms prescriptions into guided EOPYY orders, combining AI-assisted data capture with customer workflows, sales analytics, discount approvals and delivery tracking.",
+    tech: ["Next.js", "TypeScript", "Capacitor", "Redux Toolkit", "Power BI"],
     image: "/projects/colai.jpg",
     video: "/projects/colai-preview.mp4",
   },
   {
-    title: "Mobile SaaS",
+    title: "E-Order — B2B Procurement Platform",
     description:
-      "Real-time analytics dashboard powering cross-platform mobile applications.",
-    tech: ["React Native", "GraphQL", "AWS"],
+      "A B2B procurement app available across web, iOS and Android, connecting retailers with suppliers through searchable catalogs, smart baskets, delivery scheduling, repeat ordering and team administration.",
+    tech: ["Next.js", "TypeScript", "PWA", "TanStack Query", "Zustand"],
     image: "/projects/e-order-demo.jpg",
     video: "/projects/e-order-demo.mp4",
+    darkText: true,
   },
   {
-    title: "Marketplace Platform",
+    title: "Casestudy B2B Marketplace",
     description:
       "Scalable B2B marketplace with advanced search, payments and analytics.",
     tech: ["Next.js", "Node", "PostgreSQL"],
@@ -29,38 +31,84 @@ const projects = [
     video: "/projects/eorder-preview.mp4",
   },
   {
-    title: "Mobile SaaS Dashboard",
+    title: "Expenses Tracker App",
     description:
-      "Real-time analytics dashboard powering cross-platform mobile applications.",
-    tech: ["React Native", "GraphQL", "AWS"],
-    image: "/projects/test.jpg",
-    video: "/projects/test2.mp4",
+      "A responsive expense tracker for field teams that digitizes daily travel logs and automatically calculates mileage reimbursement and monthly totals across parking, tolls, meals and other costs.",
+    tech: ["Next.js", "TypeScript", "TanStack Query", "React Hook Form", "Zod"],
+    image: "/projects/colai-expenses.png",
+    darkText: true,
   },
 
 ];
 
 const featuredProjects = [
   {
-    title: "Enterprise Transformation Program",
+    title: "Oval Parts",
     description:
-      "A flagship delivery unifying product, automation and AI systems into one scalable platform.",
-    tech: ["Next.js", "OpenAI", "Automation", "Cloud"],
-    image: "/projects/featured.jpg",
+      "A unified automotive parts platform for product search, customer orders, pricing requests and inter-branch stock workflows.",
+    tech: ["Next.js", "TypeScript", "SoftOne ERP", "SQL Server"],
+    image: "/projects/oval-searchparts.png",
+    images: [
+      "/projects/oval-searchparts.png",
+      "/projects/oval-reqprice.png",
+      "/projects/oval-endorequest.png",
+      "/projects/oval-anatrofrequest.png",
+      "/projects/oval-anatrof.png",
+    ],
+  },
+
+  {
+    title: "Laniakea — Developer Teams Website",
+    description:
+      "A premium B2B website positioning Laniakea's dedicated developers, team augmentation and project squads through a clear service structure and distinctive editorial design.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    image: "/projects/laniakea.png",
+    images: [
+      "/projects/laniakea.png",
+      "/projects/laniakea-2.png",
+      "/projects/laniakea-3.png",
+    ],
+    href: "https://www.laniakea.gr/",
+  },
+  {
+    title: "Application Online Guide",
+    description:
+      "A responsive, step-by-step guide that helps Colai users navigate the app, complete AI-assisted orders and master everyday workflows.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    image: "/projects/application-online-guide.png",
   },
   {
     title: "Architectural Studio Website",
     description:
-      "A major multi-surface platform aligning customer journeys, operational data and AI-assisted workflows across the business.",
-    tech: ["React", "Node", "Cloud"],
+      "Design portfolio for ILARQ Studio, showcasing residential, hospitality and international architecture through immersive project galleries and on-site media.",
+    tech: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
     image: "/projects/ilarq.jpg",
-    href: "https://ilarq.vercel.app/",
+    href: "https://www.ilarq.studio/",
+  },
+
+  {
+    title: "Vector Dev — Software Company Website",
+    description:
+      "A modern, responsive company website for Vector Dev, showcasing tailored software, web platforms, system integrations and automation services through a clear, high-performance experience.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    image: "/projects/vector-dev.png",
+    href: "https://www.vectordev.gr/",
   },
 ];
 
 function ProjectCard({ project, onOpen, featured = false }) {
   const [hovered, setHovered] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
   const cardRef = useRef(null);
   const videoRef = useRef(null);
+  const projectImages = project.images?.length ? project.images : [project.image];
+
+  const changeImage = (event, direction) => {
+    event.stopPropagation();
+    setImageIndex((current) =>
+      (current + direction + projectImages.length) % projectImages.length
+    );
+  };
 
   const handleMouseMove = (e) => {
     const card = cardRef.current;
@@ -120,13 +168,36 @@ function ProjectCard({ project, onOpen, featured = false }) {
           }`}
       >
         <img
-          src={project.image}
-          alt={project.title}
+          src={projectImages[imageIndex]}
+          alt={`${project.title}${projectImages.length > 1 ? ` preview ${imageIndex + 1}` : ""}`}
           className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:saturate-[1.08] ${featured
             ? "object-top group-hover:scale-[1.02]"
             : "object-top group-hover:scale-[1.015]"
             }`}
         />
+
+        {projectImages.length > 1 ? (
+          <div className="absolute inset-x-4 top-1/2 z-20 flex -translate-y-1/2 items-center justify-between opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100">
+            <button
+              type="button"
+              aria-label={`Show previous ${project.title} image`}
+              data-cursor-theme="dark"
+              onClick={(event) => changeImage(event, -1)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/80"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              aria-label={`Show next ${project.title} image`}
+              data-cursor-theme="dark"
+              onClick={(event) => changeImage(event, 1)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/80"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        ) : null}
 
         {project.video ? (
           <video
@@ -145,9 +216,11 @@ function ProjectCard({ project, onOpen, featured = false }) {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent_24%)] opacity-35 transition-opacity duration-200 group-hover:opacity-55" />
 
         <div
-          className={`absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${featured
-            ? "bg-gradient-to-t from-black/28 via-black/10 to-transparent"
-            : "bg-gradient-to-t from-black/22 via-black/8 to-transparent"
+          className={`absolute inset-0 transition-opacity duration-200 ${featured
+            ? "bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-100 group-hover:from-black/50"
+            : project.darkText
+              ? "bg-gradient-to-t from-white/95 via-white/35 to-transparent opacity-100 group-hover:from-white/90"
+              : "bg-gradient-to-t from-black/22 via-black/8 to-transparent opacity-0 group-hover:opacity-100"
             }`}
         />
 
@@ -155,17 +228,9 @@ function ProjectCard({ project, onOpen, featured = false }) {
       </div>
 
       <div
-        className={`absolute bottom-0 w-full text-white transition-transform duration-500 ease-out group-hover:-translate-y-1 ${featured ? "p-6 md:p-10" : "p-6"
+        className={`absolute bottom-0 w-full transition-transform duration-500 ease-out group-hover:-translate-y-1 ${project.darkText ? "text-black" : "text-white"} ${featured ? "p-6 md:p-10" : "p-6"
           }`}
       >
-        <div className="mb-4 flex items-center justify-between gap-4">
-          <span className="text-[10px] font-medium uppercase tracking-[0.24em] text-white/55">
-            Case Study
-          </span>
-          <span className="text-xs text-white/45 transition-all duration-500 group-hover:translate-x-1 group-hover:text-white/80">
-            View Project
-          </span>
-        </div>
 
         <h3 className={`mb-2 font-semibold ${featured ? "text-3xl" : "text-xl"}`}>
           {project.title}
@@ -182,13 +247,72 @@ function ProjectCard({ project, onOpen, featured = false }) {
           {project.tech.map((t) => (
             <span
               key={t}
-              className="rounded-full border border-white/10 bg-white/8 px-3 py-1 text-xs backdrop-blur-md transition-colors duration-500 group-hover:border-white/20 group-hover:bg-white/12"
+              className={`rounded-full px-3 py-1 text-xs backdrop-blur-md transition-colors duration-500 ${project.darkText
+                ? "border border-black/15 bg-white/60 text-black group-hover:border-black/25 group-hover:bg-white/75"
+                : "border border-white/10 bg-white/8 group-hover:border-white/20 group-hover:bg-white/12"
+                }`}
             >
               {t}
             </span>
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+function FeaturedProjectImage({ project }) {
+  const images = project.images?.length ? project.images : [project.image];
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const showImage = (direction) => {
+    setImageIndex((current) =>
+      (current + direction + images.length) % images.length
+    );
+  };
+
+  return (
+    <div className="group/preview relative">
+      <img
+        src={images[imageIndex]}
+        alt={`${project.title} preview ${imageIndex + 1} of ${images.length}`}
+        className="aspect-[16/7] w-full object-cover object-top"
+      />
+
+      {images.length > 1 ? (
+        <>
+          <button
+            type="button"
+            aria-label={`Show previous ${project.title} image`}
+            onClick={() => showImage(-1)}
+            className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-xl backdrop-blur-md transition hover:scale-105 hover:bg-black/85 sm:left-5"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            aria-label={`Show next ${project.title} image`}
+            onClick={() => showImage(1)}
+            className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-xl backdrop-blur-md transition hover:scale-105 hover:bg-black/85 sm:right-5"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+
+          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/60 px-3 py-2 backdrop-blur-md">
+            {images.map((image, index) => (
+              <button
+                key={image}
+                type="button"
+                aria-label={`Show ${project.title} image ${index + 1}`}
+                onClick={() => setImageIndex(index)}
+                className={`h-1.5 rounded-full transition-all ${
+                  index === imageIndex ? "w-5 bg-white" : "w-1.5 bg-white/45 hover:bg-white/70"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      ) : null}
     </div>
   );
 }
@@ -233,11 +357,7 @@ function ProjectModal({ project, onClose }) {
                 </div>
               </div>
 
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full aspect-[16/7] object-cover object-top"
-              />
+              <FeaturedProjectImage project={project} />
             </div>
           </div>
         ) : (
