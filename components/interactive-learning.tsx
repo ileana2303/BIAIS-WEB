@@ -39,7 +39,7 @@ export default function InteractiveLearning() {
       </Container>
 
       <div
-        className="mx-4 overflow-hidden rounded-[2rem] bg-black py-14 text-[#FFFAF0] sm:mx-6 sm:rounded-[3rem] sm:py-16 md:mx-10 lg:py-20 xl:mx-16"
+        className="mx-4 overflow-hidden rounded-[2rem] bg-black py-14 text-[#FFFAF0] sm:mx-6 sm:rounded-[3rem] sm:py-16 md:mx-10 lg:py-20 xl:mx-16 2xl:mx-auto 2xl:max-w-[1792px]"
         data-cursor-theme="dark"
       >
         <Container>

@@ -1,11 +1,31 @@
 import Container from "./layout/container"
 
 const services = [
-  { title: "Backend Engineering", desc: "Scalable infrastructure and APIs." },
-  { title: "Frontend Development", desc: "Modern interfaces with React." },
-  { title: "Mobile Applications", desc: "Cross-platform mobile apps." },
-  { title: "Artificial Intelligence", desc: "AI powered products." },
-  { title: "Product Design", desc: "User-focused digital experiences." },
+  {
+    title: "Backend Engineering",
+    desc: "Scalable infrastructure and APIs.",
+    hoverColor: "hover:bg-blue-600",
+  },
+  {
+    title: "Frontend Development",
+    desc: "Modern interfaces with React.",
+    hoverColor: "hover:bg-green-600",
+  },
+  {
+    title: "Mobile Applications",
+    desc: "Cross-platform mobile apps.",
+    hoverColor: "hover:bg-yellow-300",
+  },
+  {
+    title: "Artificial Intelligence",
+    desc: "AI powered products.",
+    hoverColor: "hover:bg-red-500",
+  },
+  {
+    title: "Product Design",
+    desc: "User-focused digital experiences.",
+    hoverColor: "hover:bg-purple-600",
+  },
 ]
 
 export default function Services() {
@@ -23,7 +43,7 @@ export default function Services() {
             <div
               key={service.title}
               data-cursor-theme="dark"
-              className="flex aspect-square flex-col items-center justify-start rounded-2xl border border-black bg-black p-8 text-center text-[#FFFAF0] transition duration-300 hover:-translate-y-2 hover:border-[#FFFAF0] hover:shadow-2xl"
+              className={`flex aspect-square flex-col items-center justify-start rounded-2xl border border-black bg-black p-8 text-center text-[#FFFAF0] transition duration-500 ease-out hover:-translate-y-2 hover:border-[#FFFAF0] hover:shadow-2xl ${service.hoverColor}`}
             >
               <h3 className="mb-4 text-4xl font-semibold">{service.title}</h3>
               <p className="text-gray-200">{service.desc}</p>

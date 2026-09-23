@@ -18,7 +18,7 @@ export default function CTA() {
         <div className="grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2">
 
           <div
-            className="w-full max-w-[28rem] bg-black rounded-3xl p-16 flex flex-col items-center justify-between md:h-[min(36vw,calc(100dvh-20rem))] md:max-w-[min(44vw,calc((100dvh-20rem)*1.18))]"
+            className="w-full max-w-[28rem] bg-black rounded-3xl p-16 flex flex-col items-center justify-between transition-colors duration-500 ease-out hover:bg-blue-600 md:h-[min(36vw,calc(100dvh-20rem))] md:max-w-[min(44vw,calc((100dvh-20rem)*1.18))]"
             data-cursor-theme="dark"
           >
 
@@ -38,7 +38,7 @@ export default function CTA() {
           </div>
 
           <div
-            className="w-full max-w-[28rem] bg-black rounded-3xl p-16 flex flex-col items-center justify-between md:h-[min(36vw,calc(100dvh-20rem))] md:max-w-[min(44vw,calc((100dvh-20rem)*1.18))]"
+            className="w-full max-w-[28rem] bg-black rounded-3xl p-16 flex flex-col items-center justify-between transition-colors duration-500 ease-out hover:bg-green-600 md:h-[min(36vw,calc(100dvh-20rem))] md:max-w-[min(44vw,calc((100dvh-20rem)*1.18))]"
             data-cursor-theme="dark"
           >
 
