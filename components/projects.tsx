@@ -47,8 +47,9 @@ const featuredProjects = [
     description:
       "A unified automotive parts platform for product search, customer orders, pricing requests and inter-branch stock workflows.",
     tech: ["Next.js", "TypeScript", "SoftOne ERP", "SQL Server"],
-    image: "/projects/oval-searchparts.png",
+    image: "/projects/oval.png",
     images: [
+      "/projects/oval.png",
       "/projects/oval-searchparts.png",
       "/projects/oval-reqprice.png",
       "/projects/oval-endorequest.png",
@@ -63,11 +64,6 @@ const featuredProjects = [
       "A premium B2B website positioning Laniakea's dedicated developers, team augmentation and project squads through a clear service structure and distinctive editorial design.",
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     image: "/projects/laniakea.png",
-    images: [
-      "/projects/laniakea.png",
-      "/projects/laniakea-2.png",
-      "/projects/laniakea-3.png",
-    ],
     href: "https://www.laniakea.gr/",
   },
   {
@@ -96,7 +92,7 @@ const featuredProjects = [
   },
 ];
 
-function ProjectCard({ project, onOpen, featured = false }) {
+function ProjectCard({ project, featured = false }) {
   const [hovered, setHovered] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   const cardRef = useRef(null);
@@ -143,22 +139,19 @@ function ProjectCard({ project, onOpen, featured = false }) {
   const handleClick = () => {
     if (project.href) {
       window.location.assign(project.href);
-      return;
     }
-
-    onOpen({ ...project, featured });
   };
 
   return (
     <div
       ref={cardRef}
-      data-cursor-interactive="true"
+      data-cursor-interactive={project.href ? "true" : undefined}
       data-cursor-theme="dark"
       onMouseEnter={handleEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleLeave}
-      onClick={handleClick}
-      className={`group relative cursor-pointer overflow-hidden rounded-[28px]  bg-neutral-950 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out transform-gpu will-change-transform hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_30px_80px_rgba(0,0,0,0.28)] ${featured ? "md:col-span-2 xl:col-span-4" : ""
+      onClick={project.href ? handleClick : undefined}
+      className={`group relative overflow-hidden rounded-[28px] bg-neutral-950 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out transform-gpu will-change-transform hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_30px_80px_rgba(0,0,0,0.28)] ${project.href ? "cursor-pointer" : ""} ${featured ? "md:col-span-2 xl:col-span-4" : ""
         }`}
     >
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_28%,transparent_72%,rgba(255,255,255,0.04))] opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
@@ -261,147 +254,7 @@ function ProjectCard({ project, onOpen, featured = false }) {
   );
 }
 
-function FeaturedProjectImage({ project }) {
-  const images = project.images?.length ? project.images : [project.image];
-  const [imageIndex, setImageIndex] = useState(0);
-
-  const showImage = (direction) => {
-    setImageIndex((current) =>
-      (current + direction + images.length) % images.length
-    );
-  };
-
-  return (
-    <div className="group/preview relative">
-      <img
-        src={images[imageIndex]}
-        alt={`${project.title} preview ${imageIndex + 1} of ${images.length}`}
-        className="aspect-[16/7] w-full object-cover object-top"
-      />
-
-      {images.length > 1 ? (
-        <>
-          <button
-            type="button"
-            aria-label={`Show previous ${project.title} image`}
-            onClick={() => showImage(-1)}
-            className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-xl backdrop-blur-md transition hover:scale-105 hover:bg-black/85 sm:left-5"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-          <button
-            type="button"
-            aria-label={`Show next ${project.title} image`}
-            onClick={() => showImage(1)}
-            className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-xl backdrop-blur-md transition hover:scale-105 hover:bg-black/85 sm:right-5"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-
-          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/60 px-3 py-2 backdrop-blur-md">
-            {images.map((image, index) => (
-              <button
-                key={image}
-                type="button"
-                aria-label={`Show ${project.title} image ${index + 1}`}
-                onClick={() => setImageIndex(index)}
-                className={`h-1.5 rounded-full transition-all ${
-                  index === imageIndex ? "w-5 bg-white" : "w-1.5 bg-white/45 hover:bg-white/70"
-                }`}
-              />
-            ))}
-          </div>
-        </>
-      ) : null}
-    </div>
-  );
-}
-
-function ProjectModal({ project, onClose }) {
-  if (!project) return null;
-
-  const isFeatured = Boolean(project.featured);
-
-  return (
-
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-lg p-6"
-      data-cursor-theme="dark"
-      onClick={onClose}
-    >
-      <div
-        className={`relative w-full overflow-hidden border border-white/10 bg-black shadow-2xl ${isFeatured
-          ? "max-w-[96rem] rounded-[32px]"
-          : "max-w-sm rounded-[36px] sm:max-w-md"
-          }`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          type="button"
-          onClick={onClose}
-          data-cursor-theme="dark"
-          className="absolute right-4 top-4 z-20 text-white/70 hover:text-white sm:right-5 sm:top-5"
-        >
-          Close
-        </button>
-
-        {isFeatured ? (
-          <div className="p-4 pt-14 sm:p-5 sm:pt-16">
-            <div className="overflow-hidden rounded-[24px] border border-white/10 bg-neutral-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                <div className="ml-3 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/45">
-                  Web Preview
-                </div>
-              </div>
-
-              <FeaturedProjectImage project={project} />
-            </div>
-          </div>
-        ) : (
-          <div className="px-3 pb-3 pt-12 sm:px-4 sm:pb-4 sm:pt-14">
-            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-neutral-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-              <video
-                src={project.video}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full aspect-[9/19.5] object-cover object-top"
-              />
-            </div>
-          </div>
-        )}
-
-        <div className={`text-white ${isFeatured ? "p-6 pt-2 sm:p-8 sm:pt-3" : "p-6 pt-4 sm:p-8 sm:pt-5"
-          }`}>
-          <h3 className="mb-4 text-2xl font-semibold sm:text-3xl">{project.title}</h3>
-
-          <p className="mb-6 leading-relaxed text-white/70">
-            {project.description}
-          </p>
-
-          <div className="flex flex-wrap gap-3">
-            {project.tech.map((t) => (
-              <span
-                key={t}
-                className="text-sm px-4 py-1 rounded-full bg-white/10 border border-white/10"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState(null);
-
   return (
 
     <section id="projects" className="py-32" data-cursor-theme="light">
@@ -424,7 +277,6 @@ export default function Projects() {
             <ProjectCard
               key={project.title}
               project={project}
-              onOpen={setActiveProject}
             />
           ))}
 
@@ -432,16 +284,10 @@ export default function Projects() {
             <ProjectCard
               key={project.title}
               project={project}
-              onOpen={setActiveProject}
               featured={true}
             />
           ))}
         </div>
-
-        <ProjectModal
-          project={activeProject}
-          onClose={() => setActiveProject(null)}
-        />
       </Container>
     </section>
   );
