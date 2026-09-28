@@ -82,8 +82,8 @@ export default function Footer() {
           </div>
 
           <div className="mt-16 flex justify-between border-t pt-8 text-sm text-gray-400">
-            <span>© {new Date().getFullYear()} BIAIS</span>
-            <span>Building intelligent digital products</span>
+            <span>Copyright ©  {new Date().getFullYear()} BIAIS</span>
+            <span>Designed & Developed by <b>BIAIS</b> Software Development Company</span>
           </div>
         </div>
       </Container>
