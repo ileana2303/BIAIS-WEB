@@ -43,6 +43,31 @@ const projects = [
 
 const featuredProjects = [
   {
+    title: "AMSA Works — Intranet Application Hub",
+    description:
+      "A secure internal gateway that brings eight business applications into one focused workspace, connecting financial performance, targets, reporting, sales, AI tools and product documentation.",
+    tech: ["Next.js 15", "React 19", "TypeScript", "CSS"],
+    image: "/projects/amsaworks-hero.png",
+    images: [
+      "/projects/amsaworks-hero.png",
+      "/projects/amsaworks2.png",
+      "/projects/amsaworks3.png",
+    ],
+  },
+  {
+    title: "OLT Flour & Sugar — Wholesale Website",
+    description:
+      "A refined corporate website for OLT Flour and Sugar, presenting its wholesale flour, legumes, sugar and salt portfolio through clear Greek-language content and a distinctive editorial identity.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    href: "https://www.oltflour.eu/",
+    image: "/projects/olt.png",
+    images: [
+      "/projects/olt.png",
+      "/projects/olt-flour.png",
+      "/projects/olt-flour-profile.png",
+    ],
+  },
+  {
     title: "Oval Parts",
     description:
       "A unified automotive parts platform for product search, customer orders, pricing requests and inter-branch stock workflows.",
@@ -151,11 +176,9 @@ function ProjectCard({ project, featured = false }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleLeave}
       onClick={project.href ? handleClick : undefined}
-      className={`group relative overflow-hidden rounded-[28px] bg-neutral-950 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out transform-gpu will-change-transform hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_30px_80px_rgba(0,0,0,0.28)] ${project.href ? "cursor-pointer" : ""} ${featured ? "md:col-span-2 xl:col-span-4" : ""
+      className={`group relative overflow-hidden rounded-[28px] border-0 bg-transparent shadow-[0_18px_50px_rgba(0,0,0,0.18)] outline-none transition-all duration-500 ease-out transform-gpu will-change-transform hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(0,0,0,0.28)] ${project.href ? "cursor-pointer" : ""} ${featured ? "md:col-span-2 xl:col-span-4" : ""
         }`}
     >
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_28%,transparent_72%,rgba(255,255,255,0.04))] opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
-
       <div
         className={`relative w-full ${featured ? "aspect-[4/5] md:aspect-[16/7]" : "aspect-[9/18]"
           }`}
@@ -163,7 +186,7 @@ function ProjectCard({ project, featured = false }) {
         <img
           src={projectImages[imageIndex]}
           alt={`${project.title}${projectImages.length > 1 ? ` preview ${imageIndex + 1}` : ""}`}
-          className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:saturate-[1.08] ${featured
+          className={`absolute inset-[-1px] h-[calc(100%+2px)] w-[calc(100%+2px)] max-w-none object-cover transition-all duration-700 ease-out group-hover:saturate-[1.08] ${featured
             ? "object-top group-hover:scale-[1.02]"
             : "object-top group-hover:scale-[1.015]"
             }`}
@@ -201,7 +224,7 @@ function ProjectCard({ project, featured = false }) {
             loop
             playsInline
             preload="auto"
-            className={`absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-out ${featured ? "group-hover:scale-[1.03]" : "object-top group-hover:scale-[1.015]"} ${hovered ? "scale-100 opacity-100" : "scale-[1.005] opacity-0"
+            className={`absolute inset-[-1px] h-[calc(100%+2px)] w-[calc(100%+2px)] max-w-none object-cover transition-all duration-500 ease-out ${featured ? "group-hover:scale-[1.03]" : "object-top group-hover:scale-[1.015]"} ${hovered ? "scale-100 opacity-100" : "scale-[1.005] opacity-0"
               }`}
           />
         ) : null}
